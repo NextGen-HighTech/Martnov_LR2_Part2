@@ -1,52 +1,10 @@
 #include <iostream>
 #include <climits>
 #include <limits>
+#include "Martynov_LR2_part2.h"
 
 
 using namespace std;
-
-int UserInput(string input) {
-    if (input.empty()) return -1;
-    try {
-        int number = stoi(input);
-        if (number >= 0) {
-            return number;
-        } else {
-            return -1;
-        }
-    }
-    catch (...) {
-        return -1;
-    }
-}
-
-int findMaxDigit(int x)
-{
-    int maxDigit = 0;
-    while (x > 0) {
-        int digit = x % 10;
-        if (digit > maxDigit) {
-            maxDigit = digit;
-        }
-        x /= 10;
-    }
-    cout << "Наибольшая цифра в числе: " << maxDigit << endl;
-    return maxDigit;
-}
-
-int findMinDigit(int x)
-{
-    int minDigit = 9;
-    while (x > 0) {
-        int digit = x % 10;
-        if (digit < minDigit) {
-            minDigit = digit;
-        }
-        x /= 10;
-    }
-    cout << "Наименьшая цифра в числе: " << minDigit << endl;
-    return minDigit;
-}
 
 int main() {
     int choice;
@@ -76,10 +34,10 @@ int main() {
                 number = UserInput(x);
                 break;
             case 2:
-                findMaxDigit(number);
+                cout << "Наибольшая цифра в числе: " << findMaxDigit(number) << endl;
                 break;
             case 3:
-                findMinDigit(number);
+                cout << "Наименьшая цифра в числе: " << findMinDigit(number) << endl;
                 break;
             case 4:
                 cout << "Выход из программы." << endl;

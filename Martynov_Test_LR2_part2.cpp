@@ -3,7 +3,7 @@
 #include "CUTE/cute/cute_runner.h"
 
 using namespace cute;
-#include "Martynov_LR2_part2.cpp"
+#include "Martynov_LR2_part2.h"
 
 void testfindMaxDigit() {
     // входное значение
@@ -23,7 +23,7 @@ void testfindMinDigit() {
     int a = 564738;
 
     //ожидаемый результат
-    int expected = 4;
+    int expected = 3;
     // получение значения с помощью тестируемого метода
     int actual = findMinDigit(a);
 
@@ -36,9 +36,9 @@ void testUserInput_Empty() {
     // исходные данные
     string str = "";
     // ожидаемое значение результата работы функции UserInput
-    bool expected = false;
+    int expected = -1;
     // получение значения с помощью тестируемого метода
-    bool actual = UserInput(str);
+    int actual = UserInput(str);
     // сравнение ожидаемого результата с полученным
     ASSERT_EQUAL(expected, actual);
 }
@@ -48,9 +48,9 @@ void testUserInput_Letter(){
     // исходные данные
     string str = "a";
     // ожидаемое значение результата работы функции UserInput
-    bool expected = false;
+    int expected = -1;
     // получение значения с помощью тестируемого метода
-    bool actual = UserInput(str);
+    int actual = UserInput(str);
     // сравнение ожидаемого результата с полученным
     ASSERT_EQUAL(expected, actual);
 }
@@ -60,9 +60,9 @@ void testUserInput_NegativeValue(){
     //исходные данные
     string str = "-5";
     //ожидаемое значение pезультата работы функции UserInput
-    bool expected = false;
+    int expected = -1;
     //получение значения с помощью тестируемого метода
-    bool actual = UserInput(str);
+    int actual = UserInput(str);
     //сравнение ожидаемого результата с полученным
     ASSERT_EQUAL(expected, actual);
 }
