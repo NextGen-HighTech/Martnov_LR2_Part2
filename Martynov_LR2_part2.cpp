@@ -5,23 +5,22 @@
 
 using namespace std;
 
-int inputNumber() {
-    int x;
-    while (true) {
-        cout << "Введите натуральное число X: ";
-        cin >> x;
-        
-        if (cin.fail() || x <= 0) {
-            cout << "Ошибка: должно быть положительное целое число." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+int UserInput(string input) {
+    if (input.empty()) return -1;
+    try {
+        int number = stoi(input);
+        if (number >= 0) {
+            return number;
         } else {
-            return x;
+            return -1;
         }
+    }
+    catch (...) {
+        return -1;
     }
 }
 
-void findMaxDigit(int x)
+int findMaxDigit(int x)
 {
     int maxDigit = 0;
     while (x > 0) {
@@ -32,9 +31,10 @@ void findMaxDigit(int x)
         x /= 10;
     }
     cout << "Наибольшая цифра в числе: " << maxDigit << endl;
+    return maxDigit;
 }
 
-void findMinDigit(int x)
+int findMinDigit(int x)
 {
     int minDigit = 9;
     while (x > 0) {
@@ -45,11 +45,13 @@ void findMinDigit(int x)
         x /= 10;
     }
     cout << "Наименьшая цифра в числе: " << minDigit << endl;
+    return minDigit;
 }
 
 int main() {
     int choice;
     int number;
+    string x;
 
     while (true) {
         cout << "Меню:" << endl;
@@ -69,7 +71,9 @@ int main() {
 
         switch (choice) {
             case 1:
-                number = inputNumber();
+                cout << "Введите натуральное число X: ";
+                cin >> x;
+                number = UserInput(x);
                 break;
             case 2:
                 findMaxDigit(number);
